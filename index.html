@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
@@ -218,16 +217,16 @@
         <p style="font-size: 20px; font-weight: bold;">Allegro</p>
       </div>
 
-      <!-- ShadowHand -->
+      <!-- Shadowhand -->
       <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
         <model-viewer
           id="uncond-viewer3"
-          src="./static/assets/uncond/ShadowHand/contactdb+apple/0.glb"
-          alt="ShadowHand Grasp"
+          src="./static/assets/uncond/Shadowhand/contactdb+apple/0.glb"
+          alt="Shadowhand Grasp"
           ar camera-controls auto-rotate
           style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
         </model-viewer>
-        <p style="font-size: 20px; font-weight: bold;">ShadowHand</p>
+        <p style="font-size: 20px; font-weight: bold;">Shadowhand</p>
       </div>
 
       <!-- Control Panel -->
@@ -271,7 +270,7 @@
     uncondLabel.textContent = gid;
     uncondViewers[0].src = `./static/assets/uncond/Barrett/${obj}/${gid}.glb`;
     uncondViewers[1].src = `./static/assets/uncond/Allegro/${obj}/${gid}.glb`;
-    uncondViewers[2].src = `./static/assets/uncond/ShadowHand/${obj}/${gid}.glb`;
+    uncondViewers[2].src = `./static/assets/uncond/Shadowhand/${obj}/${gid}.glb`;
   }
   uncondObject.addEventListener("change", updateUncond);
   uncondSlider.addEventListener("input", updateUncond);
@@ -313,16 +312,16 @@
         <p style="font-size: 20px; font-weight: bold;">Allegro</p>
       </div>
 
-      <!-- ShadowHand -->
+      <!-- Shadowhand -->
       <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
         <model-viewer
           id="cond-viewer3"
-          src="./static/assets/cond/ShadowHand/contactdb+apple/0.glb"
-          alt="ShadowHand Grasp"
+          src="./static/assets/cond/Shadowhand/contactdb+apple/0.glb"
+          alt="Shadowhand Grasp"
           ar camera-controls auto-rotate
           style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
         </model-viewer>
-        <p style="font-size: 20px; font-weight: bold;">ShadowHand</p>
+        <p style="font-size: 20px; font-weight: bold;">Shadowhand</p>
       </div>
 
       <!-- Control Panel -->
@@ -366,7 +365,7 @@
     condLabel.textContent = gid;
     condViewers[0].src = `./static/assets/cond/Barrett/${obj}/${gid}.glb`;
     condViewers[1].src = `./static/assets/cond/Allegro/${obj}/${gid}.glb`;
-    condViewers[2].src = `./static/assets/cond/ShadowHand/${obj}/${gid}.glb`;
+    condViewers[2].src = `./static/assets/cond/Shadowhand/${obj}/${gid}.glb`;
   }
   condObject.addEventListener("change", updateCond);
   condSlider.addEventListener("input", updateCond);
