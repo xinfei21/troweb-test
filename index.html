@@ -196,7 +196,7 @@
       <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
         <model-viewer
           id="modelViewer1"
-          src="static/data/3dmodel/Barrett/contactdb+apple/0.glb"
+          src="./static/assets/3dmodel/Barrett/contactdb+apple/0.glb"
           alt="Barrett Grasp"
           ar
           camera-controls
@@ -212,7 +212,7 @@
       <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
         <model-viewer
           id="modelViewer2"
-          src="static/data/3dmodel/Allegro/contactdb+apple/0.glb"
+          src="./static/assets/3dmodel/Allegro/contactdb+apple/0.glb"
           alt="Allegro Grasp"
           ar
           camera-controls
@@ -228,7 +228,7 @@
       <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
         <model-viewer
           id="modelViewer3"
-          src="static/data/3dmodel/ShadowHand/contactdb+apple/0.glb"
+          src="./static/assets/3dmodel/ShadowHand/contactdb+apple/0.glb"
           alt="ShadowHand Grasp"
           ar
           camera-controls
@@ -304,9 +304,9 @@
 
     graspIDLabel.textContent = selectedGraspID;
 
-    modelViewer1.src = `static/data/3dmodel/Barrett/${selectedObject}/${selectedGraspID}.glb`;
-    modelViewer2.src = `static/data/3dmodel/Allegro/${selectedObject}/${selectedGraspID}.glb`;
-    modelViewer3.src = `static/data/3dmodel/ShadowHand/${selectedObject}/${selectedGraspID}.glb`;
+    modelViewer1.src = `./static/assets/3dmodel/Barrett/${selectedObject}/${selectedGraspID}.glb`;
+    modelViewer2.src = `./static/assets/3dmodel/Allegro/${selectedObject}/${selectedGraspID}.glb`;
+    modelViewer3.src = `./static/assets/3dmodel/ShadowHand/${selectedObject}/${selectedGraspID}.glb`;
   }
   objectNameSelect.addEventListener('change', updateModel);
   graspIDSlider.addEventListener('input', updateModel);
