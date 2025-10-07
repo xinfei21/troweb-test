@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>T(R,O) Grasp</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <!-- MathJax -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+    };
+  </script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <!-- visitor statistics -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <!-- model-viewer -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            \(\small \mathcal{T(R,O)}\) Grasp: Efficient Graph Diffusion of Robot-Object Spatial
+            Transformation for Cross-Embodiment Dexterous Grasping
+          </h1>
+          
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://xinfei21.github.io/web/">Xin Fei</a><sup>1*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ariszxxu.github.io/">Zhixuan Xu</a><sup>1*</sup>,
+            </span>
+            <span class="author-block">
+              Huaicong Fang<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ztr583.github.io/">Tianrui Zhang</a><sup>1*</sup>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="https://linsats.github.io/">Lin Shao</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <div>
+              <span class="author-block"><sup>1</sup>National University of Singapore,</span>
+              <span class="author-block"><sup>2</sup>Zhejiang University</span>
+            </div>
+            <div>
+              <span class="author-block">* denotes equal contribution</span>
+          </div>
+     
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Appendix Link. -->
+              <span class="link-block">
+                <a href="./static/assets/appendix.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Appendix</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="" 
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- Arxiv Link. -->
+              <span class="link-block">
+                <a href="" 
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="column has-text-centered", style="font-size: 24px;">
+    \(\mathcal{T(R,O)}\) \(=\) <strong>\(\mathcal{T}\)</strong>ransformation \((\)<strong>\(\mathcal{R}\)</strong>obot, <strong>\(\mathcal{O}\)</strong>bject \()\)
+  </div>
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" loop playsinline height="100%" controls class="video-with-border">
+        <source src="./static/assets/teaser.mp4" type="video/mp4">
+      </video>      
+    </div>
+  </div>
+</section>
+
+<section class="teaser image">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/assets/teaser.jpg" alt="Teaser Image" style="width:100%; height:auto;">
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Dexterous grasping remains a central challenge in robotics due to the complexity of its 
+            high-dimensional state and action space. We introduce \(\small \mathcal{T(R,O)}\) Grasp, 
+            a diffusion-based framework that efficiently generates accurate and diverse grasps across multiple robotic hands.
+            At its core is the \(\small \mathcal{T(R,O)}\) Graph, a unified representation that models spatial transformations 
+            between robotic hands and objects while encoding their geometric properties. A graph diffusion model, 
+            coupled with an efficient inverse kinematics solver, supports both unconditioned and conditioned grasp synthesis.
+          </p>
+          <p>
+            Extensive experiments on a diverse set of dexterous hands show that \(\small \mathcal{T(R,O)}\) Grasp achieves average 
+            success rate of 94.83%, inference speed of 0.21s, and throughput of 41 grasps per second on an NVIDIA A100 40GB GPU, 
+            substantially outperforming existing baselines. In addition, our approach is robust and generalizable across embodiments 
+            while significantly reducing memory consumption. More importantly, the high inference speed enables closed-loop dexterous 
+            manipulation, underscoring the potential of \(\small \mathcal{T(R,O)}\) Grasp to scale into a foundation model for dexterous grasping.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</section>
+
+<section class="pipeline">
+  <h2 class="title is-3 has-text-centered">Method Overview</h2>
+  <div class="container is-max-desktop">
+    <div class="hero-body" style="padding-top: 10px; padding-bottom: 10px;">
+      <img src="./static/assets/pipeline.jpg" alt="Teaser Image" style="width:100%; height:auto;">
+      <p>
+        Overview of \(\small \mathcal{T(R,O)}\) Grasp: We first define \(\small \mathcal{T(R,O)}\) Grasp Graph to represent spatial transformations of robotic links and
+        objects with auxiliary geometry information. Next, we introduce a graph diffusion model that enables both unconditioned and conditioned grasp synthesis.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Simulation Grasps -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3 has-text-centered">Unconditioned Grasp Synthesis</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <!-- Model Viewer 1 for Barrett -->
+      <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
+        <model-viewer
+          id="modelViewer1"
+          src="static/data/3dmodel/Barrett/contactdb+apple/0.glb"
+          alt="Barrett Grasp"
+          ar
+          camera-controls
+          auto-rotate
+          auto-rotate-delay="1000"
+          interaction-prompt-threshold="2000"
+          style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
+        </model-viewer>
+        <p style="font-size: 20px; font-weight: bold;">Barrett</p>
+      </div>
+
+      <!-- Model Viewer 2 for Allegro -->
+      <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
+        <model-viewer
+          id="modelViewer2"
+          src="static/data/3dmodel/Allegro/contactdb+apple/0.glb"
+          alt="Allegro Grasp"
+          ar
+          camera-controls
+          auto-rotate
+          auto-rotate-delay="1000"
+          interaction-prompt-threshold="2000"
+          style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
+        </model-viewer>
+        <p style="font-size: 20px; font-weight: bold;">Allegro</p>
+      </div>
+
+      <!-- Model Viewer 3 for ShadowHand -->
+      <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
+        <model-viewer
+          id="modelViewer3"
+          src="static/data/3dmodel/ShadowHand/contactdb+apple/0.glb"
+          alt="ShadowHand Grasp"
+          ar
+          camera-controls
+          auto-rotate
+          auto-rotate-delay="1000"
+          interaction-prompt-threshold="2000"
+          style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
+        </model-viewer>
+        <p style="font-size: 20px; font-weight: bold;">ShadowHand</p>
+      </div>
+
+      <!-- Controls for Object and Grasp ID -->
+      <div class="column is-one-quarter">
+        <!-- Object Name Dropdown -->
+        <div class="dropdown-container" style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
+          <label for="objectName" style="font-size: 20px; font-weight: bold;">Object Name</label>
+          <select id="objectName" class="custom-select" style="width: 200px; margin-top: 10px;">
+            <option value="contactdb+apple" style="font-size: 14px;">contactdb+apple</option>
+            <option value="contactdb+camera" style="font-size: 14px;">contactdb+camera</option>
+            <option value="contactdb+cylinder_medium" style="font-size: 14px;">contactdb+cylinder_medium</option>
+            <option value="contactdb+rubber_duck" style="font-size: 14px;">contactdb+rubber_duck</option>
+            <option value="contactdb+door_knob" style="font-size: 14px;">contactdb+door_knob</option>
+            <option value="contactdb+water_bottle" style="font-size: 14px;">contactdb+water_bottle</option>
+            <option value="ycb+baseball" style="font-size: 14px;">ycb+baseball</option>
+            <option value="ycb+pear" style="font-size: 14px;">ycb+pear</option>
+            <option value="ycb+potted_meat_can" style="font-size: 14px;">ycb+potted_meat_can</option>
+            <option value="ycb+tomato_soup_can" style="font-size: 14px;">ycb+tomato_soup_can</option>
+          </select>
+        </div>
+
+        <script>
+          function adjustSelectedFontSize() {
+            const selectElement = document.getElementById("objectName");
+            const selectedText = selectElement.options[selectElement.selectedIndex].text;
+            
+            const fontSize = Math.min(16, 320 / selectedText.length);
+            selectElement.style.fontSize = fontSize + "px";
+            const paddingSize = (32 - fontSize) / 2
+            selectElement.style.paddingTop = paddingSize + "px";
+            selectElement.style.paddingBottom = paddingSize + "px";
+          }
+        
+          window.onload = adjustSelectedFontSize;
+          document.getElementById("objectName").addEventListener("change", adjustSelectedFontSize);
+        </script>
+      
+        <!-- Grasp ID and Slider -->
+        <div class="slider-container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">
+            Grasp ID: 
+            <span id="graspIDLabel">0</span>
+          </div>
+          <input type="range" id="graspID" name="graspID" min="0" max="9" value="0" style="width: 200px; height: 15px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const modelViewer1 = document.getElementById('modelViewer1');
+  const modelViewer2 = document.getElementById('modelViewer2');
+  const modelViewer3 = document.getElementById('modelViewer3');
+  const objectNameSelect = document.getElementById('objectName');
+  const graspIDSlider = document.getElementById('graspID');
+  const graspIDLabel = document.getElementById('graspIDLabel');
+
+  const robotNames = ["Barrett", "Allegro", "ShadowHand"];
+
+  function updateModel() {
+    const selectedObject = objectNameSelect.value;
+    const selectedGraspID = graspIDSlider.value;
+
+    graspIDLabel.textContent = selectedGraspID;
+
+    modelViewer1.src = `static/data/3dmodel/Barrett/${selectedObject}/${selectedGraspID}.glb`;
+    modelViewer2.src = `static/data/3dmodel/Allegro/${selectedObject}/${selectedGraspID}.glb`;
+    modelViewer3.src = `static/data/3dmodel/ShadowHand/${selectedObject}/${selectedGraspID}.glb`;
+  }
+  objectNameSelect.addEventListener('change', updateModel);
+  graspIDSlider.addEventListener('input', updateModel);
+</script>
+<!--/ Simulation Grasps -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Real World. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Real-world Results</h2>
+        <div class="content has-text-centered">
+
+          <h3 style="margin-bottom: 8px; font-size: 1.2rem; color: #444;">
+            XHand: 91%
+          </h3>
+          
+          <div style="margin-bottom: 20px;">
+            <video autoplay muted loop playsinline style="width:100%; height:auto;">
+              <source src="./static/assets/xhand.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <h3 style="margin-bottom: 8px; font-size: 1.2rem; color: #444;">
+            LEAP Hand: 90%
+          </h3>
+          <div>
+            <video autoplay muted loop playsinline style="width:100%; height:auto;">
+              <source src="./static/assets/leaphand.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <h3 style="margin-bottom: 8px; font-size: 1.2rem; color: #444;">
+            Closed-loop Grasping
+          </h3>
+          
+          <div style="margin-bottom: 20px;">
+            <video autoplay muted loop playsinline style="width:100%; height:auto;">
+              <source src="./static/assets/closed-loop.mp4" type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Real World. -->
+  </div>
+</section>
+
+<!-- Citation -->
+<section class="section" id="Citation">
+  <div class="container is-max-desktop content" style="margin-top: -40px;">
+    <h2 class="title">Citation</h2>
+    <pre>
+      <code>
+
+      </code>
+    </pre>
+  </div>
+</section>
+<!--/ Citation -->
+
+<footer class="footer">
+  <div class="columns is-centered">
+    <div class="column is-8 has-text-centered">
+      <div class="content">
+        <p>
+          This website is designed based on 
+          <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          <br>
+          Thanks for your visiting😊!
+          <span id="busuanzi_container_site_pv">
+            Total Page Views: <span id="busuanzi_value_site_pv"></span>
+          </span>
+          <br>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+</body>
+</html>
