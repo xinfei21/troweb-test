@@ -182,7 +182,9 @@
   </div>
 </section>
 
-<!-- Simulation Grasps -->
+<!-- ========================= -->
+<!-- Unconditioned Grasps -->
+<!-- ========================= -->
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -192,96 +194,61 @@
     </div>
 
     <div class="columns is-centered has-text-centered">
-      <!-- Model Viewer 1 for Barrett -->
+      <!-- Barrett -->
       <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
         <model-viewer
-          id="modelViewer1"
-          src="./static/assets/3dmodel/Barrett/contactdb+apple/0.glb"
+          id="uncond-viewer1"
+          src="./static/assets/uncond/Barrett/contactdb+apple/0.glb"
           alt="Barrett Grasp"
-          ar
-          camera-controls
-          auto-rotate
-          auto-rotate-delay="1000"
-          interaction-prompt-threshold="2000"
+          ar camera-controls auto-rotate
           style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
         </model-viewer>
         <p style="font-size: 20px; font-weight: bold;">Barrett</p>
       </div>
 
-      <!-- Model Viewer 2 for Allegro -->
+      <!-- Allegro -->
       <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
         <model-viewer
-          id="modelViewer2"
-          src="./static/assets/3dmodel/Allegro/contactdb+apple/0.glb"
+          id="uncond-viewer2"
+          src="./static/assets/uncond/Allegro/contactdb+apple/0.glb"
           alt="Allegro Grasp"
-          ar
-          camera-controls
-          auto-rotate
-          auto-rotate-delay="1000"
-          interaction-prompt-threshold="2000"
+          ar camera-controls auto-rotate
           style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
         </model-viewer>
         <p style="font-size: 20px; font-weight: bold;">Allegro</p>
       </div>
 
-      <!-- Model Viewer 3 for ShadowHand -->
+      <!-- ShadowHand -->
       <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
         <model-viewer
-          id="modelViewer3"
-          src="./static/assets/3dmodel/ShadowHand/contactdb+apple/0.glb"
+          id="uncond-viewer3"
+          src="./static/assets/uncond/ShadowHand/contactdb+apple/0.glb"
           alt="ShadowHand Grasp"
-          ar
-          camera-controls
-          auto-rotate
-          auto-rotate-delay="1000"
-          interaction-prompt-threshold="2000"
+          ar camera-controls auto-rotate
           style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
         </model-viewer>
         <p style="font-size: 20px; font-weight: bold;">ShadowHand</p>
       </div>
 
-      <!-- Controls for Object and Grasp ID -->
-      <div class="column is-one-quarter">
-        <!-- Object Name Dropdown -->
-        <div class="dropdown-container" style="text-align: center; margin-top: 10px; margin-bottom: 20px;">
-          <label for="objectName" style="font-size: 20px; font-weight: bold;">Object Name</label>
-          <select id="objectName" class="custom-select" style="width: 200px; margin-top: 10px;">
-            <option value="contactdb+apple" style="font-size: 14px;">contactdb+apple</option>
-            <option value="contactdb+camera" style="font-size: 14px;">contactdb+camera</option>
-            <option value="contactdb+cylinder_medium" style="font-size: 14px;">contactdb+cylinder_medium</option>
-            <option value="contactdb+rubber_duck" style="font-size: 14px;">contactdb+rubber_duck</option>
-            <option value="contactdb+door_knob" style="font-size: 14px;">contactdb+door_knob</option>
-            <option value="contactdb+water_bottle" style="font-size: 14px;">contactdb+water_bottle</option>
-            <option value="ycb+baseball" style="font-size: 14px;">ycb+baseball</option>
-            <option value="ycb+pear" style="font-size: 14px;">ycb+pear</option>
-            <option value="ycb+potted_meat_can" style="font-size: 14px;">ycb+potted_meat_can</option>
-            <option value="ycb+tomato_soup_can" style="font-size: 14px;">ycb+tomato_soup_can</option>
-          </select>
-        </div>
+      <!-- Control Panel -->
+      <div class="column is-one-quarter" style="text-align: center;">
+        <label for="uncond-object" style="font-size: 20px; font-weight: bold;">Object Name</label>
+        <select id="uncond-object" style="width: 200px; margin-top: 10px;">
+          <option value="contactdb+apple">contactdb+apple</option>
+          <option value="contactdb+camera">contactdb+camera</option>
+          <option value="contactdb+cylinder_medium">contactdb+cylinder_medium</option>
+          <option value="contactdb+rubber_duck">contactdb+rubber_duck</option>
+          <option value="contactdb+door_knob">contactdb+door_knob</option>
+          <option value="contactdb+water_bottle">contactdb+water_bottle</option>
+          <option value="ycb+baseball">ycb+baseball</option>
+          <option value="ycb+pear">ycb+pear</option>
+          <option value="ycb+potted_meat_can">ycb+potted_meat_can</option>
+          <option value="ycb+tomato_soup_can">ycb+tomato_soup_can</option>
+        </select>
 
-        <script>
-          function adjustSelectedFontSize() {
-            const selectElement = document.getElementById("objectName");
-            const selectedText = selectElement.options[selectElement.selectedIndex].text;
-            
-            const fontSize = Math.min(16, 320 / selectedText.length);
-            selectElement.style.fontSize = fontSize + "px";
-            const paddingSize = (32 - fontSize) / 2
-            selectElement.style.paddingTop = paddingSize + "px";
-            selectElement.style.paddingBottom = paddingSize + "px";
-          }
-        
-          window.onload = adjustSelectedFontSize;
-          document.getElementById("objectName").addEventListener("change", adjustSelectedFontSize);
-        </script>
-      
-        <!-- Grasp ID and Slider -->
-        <div class="slider-container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-          <div style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">
-            Grasp ID: 
-            <span id="graspIDLabel">0</span>
-          </div>
-          <input type="range" id="graspID" name="graspID" min="0" max="9" value="0" style="width: 200px; height: 15px;">
+        <div style="margin-top: 20px;">
+          <div style="font-size: 20px; font-weight: bold;">Grasp ID: <span id="uncond-id-label">0</span></div>
+          <input type="range" id="uncond-id" min="0" max="9" value="0" style="width: 200px;">
         </div>
       </div>
     </div>
@@ -289,29 +256,121 @@
 </section>
 
 <script>
-  const modelViewer1 = document.getElementById('modelViewer1');
-  const modelViewer2 = document.getElementById('modelViewer2');
-  const modelViewer3 = document.getElementById('modelViewer3');
-  const objectNameSelect = document.getElementById('objectName');
-  const graspIDSlider = document.getElementById('graspID');
-  const graspIDLabel = document.getElementById('graspIDLabel');
+  const uncondViewers = [
+    document.getElementById("uncond-viewer1"),
+    document.getElementById("uncond-viewer2"),
+    document.getElementById("uncond-viewer3")
+  ];
+  const uncondObject = document.getElementById("uncond-object");
+  const uncondSlider = document.getElementById("uncond-id");
+  const uncondLabel = document.getElementById("uncond-id-label");
 
-  const robotNames = ["Barrett", "Allegro", "ShadowHand"];
-
-  function updateModel() {
-    const selectedObject = objectNameSelect.value;
-    const selectedGraspID = graspIDSlider.value;
-
-    graspIDLabel.textContent = selectedGraspID;
-
-    modelViewer1.src = `./static/assets/3dmodel/Barrett/${selectedObject}/${selectedGraspID}.glb`;
-    modelViewer2.src = `./static/assets/3dmodel/Allegro/${selectedObject}/${selectedGraspID}.glb`;
-    modelViewer3.src = `./static/assets/3dmodel/ShadowHand/${selectedObject}/${selectedGraspID}.glb`;
+  function updateUncond() {
+    const obj = uncondObject.value;
+    const gid = uncondSlider.value;
+    uncondLabel.textContent = gid;
+    uncondViewers[0].src = `./static/assets/uncond/Barrett/${obj}/${gid}.glb`;
+    uncondViewers[1].src = `./static/assets/uncond/Allegro/${obj}/${gid}.glb`;
+    uncondViewers[2].src = `./static/assets/uncond/ShadowHand/${obj}/${gid}.glb`;
   }
-  objectNameSelect.addEventListener('change', updateModel);
-  graspIDSlider.addEventListener('input', updateModel);
+  uncondObject.addEventListener("change", updateUncond);
+  uncondSlider.addEventListener("input", updateUncond);
 </script>
-<!--/ Simulation Grasps -->
+
+<!-- ========================= -->
+<!-- Conditioned Grasps -->
+<!-- ========================= -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column">
+        <h2 class="title is-3 has-text-centered">Conditioned Grasp Synthesis</h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+      <!-- Barrett -->
+      <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
+        <model-viewer
+          id="cond-viewer1"
+          src="./static/assets/cond/Barrett/contactdb+apple/0.glb"
+          alt="Barrett Grasp"
+          ar camera-controls auto-rotate
+          style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
+        </model-viewer>
+        <p style="font-size: 20px; font-weight: bold;">Barrett</p>
+      </div>
+
+      <!-- Allegro -->
+      <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
+        <model-viewer
+          id="cond-viewer2"
+          src="./static/assets/cond/Allegro/contactdb+apple/0.glb"
+          alt="Allegro Grasp"
+          ar camera-controls auto-rotate
+          style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
+        </model-viewer>
+        <p style="font-size: 20px; font-weight: bold;">Allegro</p>
+      </div>
+
+      <!-- ShadowHand -->
+      <div class="column is-one-quarter" style="display: flex; flex-direction: column; align-items: center;">
+        <model-viewer
+          id="cond-viewer3"
+          src="./static/assets/cond/ShadowHand/contactdb+apple/0.glb"
+          alt="ShadowHand Grasp"
+          ar camera-controls auto-rotate
+          style="width: 200px; height: 200px; border: 3px solid #66c0ff; border-radius: 15px;">
+        </model-viewer>
+        <p style="font-size: 20px; font-weight: bold;">ShadowHand</p>
+      </div>
+
+      <!-- Control Panel -->
+      <div class="column is-one-quarter" style="text-align: center;">
+        <label for="cond-object" style="font-size: 20px; font-weight: bold;">Object Name</label>
+        <select id="cond-object" style="width: 200px; margin-top: 10px;">
+          <option value="contactdb+apple">contactdb+apple</option>
+          <option value="contactdb+camera">contactdb+camera</option>
+          <option value="contactdb+cylinder_medium">contactdb+cylinder_medium</option>
+          <option value="contactdb+rubber_duck">contactdb+rubber_duck</option>
+          <option value="contactdb+door_knob">contactdb+door_knob</option>
+          <option value="contactdb+water_bottle">contactdb+water_bottle</option>
+          <option value="ycb+baseball">ycb+baseball</option>
+          <option value="ycb+pear">ycb+pear</option>
+          <option value="ycb+potted_meat_can">ycb+potted_meat_can</option>
+          <option value="ycb+tomato_soup_can">ycb+tomato_soup_can</option>
+        </select>
+
+        <div style="margin-top: 20px;">
+          <div style="font-size: 20px; font-weight: bold;">Grasp ID: <span id="cond-id-label">0</span></div>
+          <input type="range" id="cond-id" min="0" max="9" value="0" style="width: 200px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const condViewers = [
+    document.getElementById("cond-viewer1"),
+    document.getElementById("cond-viewer2"),
+    document.getElementById("cond-viewer3")
+  ];
+  const condObject = document.getElementById("cond-object");
+  const condSlider = document.getElementById("cond-id");
+  const condLabel = document.getElementById("cond-id-label");
+
+  function updateCond() {
+    const obj = condObject.value;
+    const gid = condSlider.value;
+    condLabel.textContent = gid;
+    condViewers[0].src = `./static/assets/cond/Barrett/${obj}/${gid}.glb`;
+    condViewers[1].src = `./static/assets/cond/Allegro/${obj}/${gid}.glb`;
+    condViewers[2].src = `./static/assets/cond/ShadowHand/${obj}/${gid}.glb`;
+  }
+  condObject.addEventListener("change", updateCond);
+  condSlider.addEventListener("input", updateCond);
+</script>
 
 <section class="section">
   <div class="container is-max-desktop">
